@@ -1,7 +1,6 @@
 package golang_web
 
 import (
-	"embed"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -68,9 +67,6 @@ func TestTemplateDirectory(t *testing.T) {
 	body, _ := ioutil.ReadAll(recorder.Result().Body)
 	fmt.Println(string(body))
 }
-
-//go:embed templates/*.gohtml
-var templates embed.FS
 
 func TemplateEmbed(writer http.ResponseWriter, request *http.Request) {
 	t := template.Must(template.ParseFS(templates, "templates/*.gohtml"))
