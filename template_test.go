@@ -2,7 +2,7 @@ package golang_web
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -31,7 +31,7 @@ func TestSimpleHTML(t *testing.T) {
 
 	SimpleHTML(recorder, request)
 
-	body, _ := ioutil.ReadAll(recorder.Result().Body)
+	body, _ := io.ReadAll(recorder.Result().Body)
 	fmt.Println(string(body))
 }
 
@@ -49,7 +49,7 @@ func TestSimpleHTMLFile(t *testing.T) {
 
 	SimpleHTMLFile(recorder, request)
 
-	body, _ := ioutil.ReadAll(recorder.Result().Body)
+	body, _ := io.ReadAll(recorder.Result().Body)
 	fmt.Println(string(body))
 }
 
@@ -64,7 +64,7 @@ func TestTemplateDirectory(t *testing.T) {
 
 	TemplateDirectory(recorder, request)
 
-	body, _ := ioutil.ReadAll(recorder.Result().Body)
+	body, _ := io.ReadAll(recorder.Result().Body)
 	fmt.Println(string(body))
 }
 
@@ -79,6 +79,6 @@ func TestTemplateEmbed(t *testing.T) {
 
 	TemplateEmbed(recorder, request)
 
-	body, _ := ioutil.ReadAll(recorder.Result().Body)
+	body, _ := io.ReadAll(recorder.Result().Body)
 	fmt.Println(string(body))
 }
